@@ -103,17 +103,12 @@
     <div class="content-container">
         <div id="suggestion-form-wrapper">
             <h1>Kotak Saran dan Masukan</h1>
-            <p>Silakan berikan saran, kritik, atau masukan Anda mengenai produk, layanan, atau situs kami. Masukan Anda sangat berarti!</p>
+            <p>Silakan berikan saran, kritik, atau masukan Anda mengenai OSIS. Masukan Anda sangat berarti!</p>
 
             <form id="suggestionForm"> 
                 <div class="form-group">
                     <label for="nama">Nama Anda (Opsional)</label>
                     <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Alamat Email (Opsional)</label>
-                    <input type="email" id="email" name="email" placeholder="Masukkan alamat email Anda">
                 </div>
 
                 <div class="form-group">
@@ -128,32 +123,33 @@
         <div id="success-message" class="content-container">
             <h2>🎉 Terima Kasih!</h2>
             <p style="font-size: 1.1em;">Terima kasih banyak atas saran dan kritikan yang telah Anda berikan.</p>
-            <p>Masukan Anda telah kami terima dan akan digunakan untuk meningkatkan kualitas layanan kami.</p>
+            <p>Masukan Anda telah kami terima dan akan digunakan untuk meningkatkan kinerja OSIS berikutnya.</p>
         </div>
     </div>
     
     <script>
         document.getElementById('suggestionForm').addEventListener('submit', function(event) {
-            // Mencegah formulir melakukan pengiriman data standar (yang akan me-refresh halaman)
+           
             event.preventDefault(); 
 
-            // Cek apakah bidang yang wajib (Saran/Masukan) sudah terisi
+           
             const saranInput = document.getElementById('saran');
             if (!saranInput.value.trim()) {
-                // Jika kosong, tampilkan pesan error bawaan browser
+
                 return; 
             }
 
-            // Jika formulir valid:
+           
 
-            // 1. Sembunyikan wrapper formulir
+
             document.getElementById('suggestion-form-wrapper').style.display = 'none';
 
-            // 2. Tampilkan pesan terima kasih
+            
             document.getElementById('success-message').style.display = 'block';
 
             // CATATAN PENTING:
-            // Di sini adalah tempat Anda dapat menambahkan kode untuk mengirim data 
+            // Di sini adalah tempat Anda dapat menambahkan kode untuk mengirim data
+            https://script.google.com/macros/s/AKfycbxqcprBOtxT5DEfJ9hgJmYmewJKO8SIEcHQs8wU4NNJAJ7wST0sPNbU8VSx20Y9EW2ReA/exec
             // formulir ke server (misalnya menggunakan fungsi fetch() atau AJAX) 
             // SEBELUM menampilkan pesan terima kasih.
             console.log("Data formulir telah 'dikirim' (secara simulasi).");
