@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kotak Saran</title>
     <style>
-       
+        
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             display: flex;
             justify-content: center;
-            align-items: flex-start; 
+            align-items: flex-start;
             min-height: 100vh;
             padding-top: 50px;
             margin: 0;
         }
 
-        
-        .form-container {
+       
+        .content-container {
             background-color: #ffffff;
             padding: 30px;
             border-radius: 12px;
@@ -27,7 +27,7 @@
             max-width: 600px;
         }
 
-       
+        
         .form-group {
             margin-bottom: 20px;
         }
@@ -62,7 +62,7 @@
             min-height: 150px;
         }
 
-       
+        
         .submit-button {
             background-color: #007bff;
             color: white;
@@ -79,34 +79,86 @@
         .submit-button:hover {
             background-color: #0056b3;
         }
+        
+       
+        #success-message {
+            text-align: center;
+            padding: 40px 20px;
+            color: #155724;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        #success-message h2 {
+            color: #155724;
+            margin-top: 0;
+        }
     </style>
 </head>
 <body>
 
-    <div class="form-container">
-        <h1>Kotak Saran dan Masukan_OSIS SMATAM</h1>
+    <div class="content-container">
+        <div id="suggestion-form-wrapper">
+            <h1>Kotak Saran dan Masukan</h1>
+            <p>Silakan berikan saran, kritik, atau masukan Anda mengenai produk, layanan, atau situs kami. Masukan Anda sangat berarti!</p>
 
-        <p>Silakan berikan saran, kritik, atau masukan Anda, Masukan Anda sangat berarti!</p>
+            <form id="suggestionForm"> 
+                <div class="form-group">
+                    <label for="nama">Nama Anda (Opsional)</label>
+                    <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda">
+                </div>
 
-        <form action="https://formsubmit.co/alamatemailanda@osissmatam02@gmail.com" method="POST">
-            <div class="form-group">
-                <label for="nama">Nama Anda </label>
-                <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda">
-            </div>
+                <div class="form-group">
+                    <label for="email">Alamat Email (Opsional)</label>
+                    <input type="email" id="email" name="email" placeholder="Masukkan alamat email Anda">
+                </div>
 
-            <div class="form-group">
-                <label for="kelas">Kelas Anda</label>
-                <input type="kelas" id="kelas" name="kelas" placeholder="Masukkan kelas Anda">
-            </div>
+                <div class="form-group">
+                    <label for="saran">Saran/Masukan Anda <span style="color: red;">*</span></label>
+                    <textarea id="saran" name="saran" required placeholder="Tuliskan saran atau masukan Anda di sini..."></textarea>
+                </div>
 
-            <div class="form-group">
-                <label for="saran">Saran/Masukan Anda <span style="color: red;">*</span></label>
-                <textarea id="saran" name="saran" required placeholder="Tuliskan saran atau masukan Anda di sini..."></textarea>
-            </div>
+                <button type="submit" class="submit-button">Kirim Saran</button>
+            </form>
+        </div>
 
-            <button type="submit" class="submit-button">Kirim Saran</button>
-        </form>
+        <div id="success-message" class="content-container">
+            <h2>🎉 Terima Kasih!</h2>
+            <p style="font-size: 1.1em;">Terima kasih banyak atas saran dan kritikan yang telah Anda berikan.</p>
+            <p>Masukan Anda telah kami terima dan akan digunakan untuk meningkatkan kualitas layanan kami.</p>
+        </div>
     </div>
+    
+    <script>
+        document.getElementById('suggestionForm').addEventListener('submit', function(event) {
+            // Mencegah formulir melakukan pengiriman data standar (yang akan me-refresh halaman)
+            event.preventDefault(); 
+
+            // Cek apakah bidang yang wajib (Saran/Masukan) sudah terisi
+            const saranInput = document.getElementById('saran');
+            if (!saranInput.value.trim()) {
+                // Jika kosong, tampilkan pesan error bawaan browser
+                return; 
+            }
+
+            // Jika formulir valid:
+
+            // 1. Sembunyikan wrapper formulir
+            document.getElementById('suggestion-form-wrapper').style.display = 'none';
+
+            // 2. Tampilkan pesan terima kasih
+            document.getElementById('success-message').style.display = 'block';
+
+            // CATATAN PENTING:
+            // Di sini adalah tempat Anda dapat menambahkan kode untuk mengirim data 
+            // formulir ke server (misalnya menggunakan fungsi fetch() atau AJAX) 
+            // SEBELUM menampilkan pesan terima kasih.
+            console.log("Data formulir telah 'dikirim' (secara simulasi).");
+        });
+    </script>
 
 </body>
 </html>
